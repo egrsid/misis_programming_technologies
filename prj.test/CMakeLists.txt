@@ -1,0 +1,2 @@
+add_executable(lruCache_test lruCache_test.cpp)
+target_link_libraries(lruCache_test lruCache)

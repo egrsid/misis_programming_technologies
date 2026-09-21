@@ -1,0 +1,1 @@
+add_library(lruCache INTERFACE lruCache.hpp)
