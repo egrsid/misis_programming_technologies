@@ -1,0 +1,3 @@
+{"id":"two-per-10","input":{"rules":[[2,10]],"users":[1,1,1,2,1],"times":[0,5,9,9,10]},"expected":"AADAA"}
+{"id":"two-rules","input":{"rules":[[1,3],[2,10]],"users":[7,7,7,7,7,7],"times":[0,1,3,4,8,11]},"expected":"ADADDA"}
+{"id":"same-time","input":{"rules":[[2,1]],"users":[5,5,5],"times":[4,4,4]},"expected":"AAD"}
