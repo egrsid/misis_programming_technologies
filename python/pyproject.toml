@@ -1,0 +1,16 @@
+# Дескриптор решения на Python. Нужен, чтобы форк запускался единообразно через
+# uv, pip или голый python — точка входа всегда `main.py` (её задаёт Runner).
+#
+# Политика файлов Gitea разрешает pyproject.toml/requirements.txt, но sandbox
+# Runner'а сетеизолирован: любые зависимости должны быть впечены в образ
+# runner-python. Базовое решение — на stdlib, зависимостей нет.
+[project]
+name = "purchase-classifier"
+version = "0.1.0"
+description = "Классификатор покупок (цена + описание → класс)"
+requires-python = ">=3.11"
+dependencies = []
+
+# Запуск локально: `uv run main.py`  (uv сам создаст .venv из этого файла).
+[tool.uv]
+package = false

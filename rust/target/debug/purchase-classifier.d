@@ -1,0 +1,1 @@
+/home/ristle/Programming/SelfSerivces/edu_platform_misis/assignment-authoring/purchase-classifier/template/rust/target/debug/purchase-classifier: /home/ristle/Programming/SelfSerivces/edu_platform_misis/assignment-authoring/purchase-classifier/template/rust/src/main.rs

@@ -1,0 +1,14 @@
+[package]
+name = "purchase-classifier"
+version = "0.1.0"
+edition = "2021"
+
+# Sandbox не имеет сети: держите решение на std без внешних крейтов
+# (или вендорьте зависимости и коммитьте Cargo.lock — запуск идёт `--locked`).
+[dependencies]
+
+[[bin]]
+name = "purchase-classifier"
+path = "src/main.rs"
+
+[workspace]
