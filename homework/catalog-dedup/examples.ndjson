@@ -1,0 +1,2 @@
+{"id":"example","input":{"ops":"AAHHAHARH","names":["Apple","apple","APPLE","apple","Pear","pear","Apple","APPLE","apple"],"tags":[[1,2],[2,1],[1,2],[1],[],[],[3],[2,1],[1,2]]},"expected":"+-+-++++-"}
+{"id":"remove-missing","input":{"ops":"RARA","names":["x","X","x","x1"],"tags":[[5],[5],[5],[5]]},"expected":"-+++"}

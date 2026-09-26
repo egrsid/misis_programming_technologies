@@ -1,0 +1,18 @@
+[package]
+name = "catalog-dedup"
+version = "0.1.0"
+edition = "2021"
+
+# Sandbox не имеет сети: только std, без внешних крейтов.
+[dependencies]
+
+[[bin]]
+name = "catalog-dedup"
+path = "src/main.rs"
+
+# Runner запускает `cargo run` (профиль dev): включаем оптимизации, иначе debug-сборка
+# медленнее в 10–30 раз. Проверки переполнения оставлены.
+[profile.dev]
+opt-level = 3
+
+[workspace]
