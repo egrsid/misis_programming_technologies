@@ -1,0 +1,5 @@
+{"id":"phone","input":{"price":1299.0,"description":"Смартфон Xiaomi Redmi Note"},"expected":"electronics"}
+{"id":"milk","input":{"price":89.0,"description":"Молоко и хлеб в Пятёрочке"},"expected":"groceries"}
+{"id":"jacket","input":{"price":4500.0,"description":"Куртка зимняя мужская"},"expected":"clothing"}
+{"id":"taxi","input":{"price":420.0,"description":"Поездка на такси Яндекс"},"expected":"transport"}
+{"id":"weird","input":{"price":10.0,"description":"Непонятная строка без ключевых слов"},"expected":"other"}
