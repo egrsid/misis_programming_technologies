@@ -45,11 +45,68 @@ static Cursor at(std::string_view s, std::string_view key) {
 // TODO: struct Item + operator== + специализация std::hash<Item> (или свой функтор),
 // хранение в std::unordered_set<Item>. Склеивать товар в строку-ключ нельзя.
 // Название сравнивается без учёта регистра, теги — как множество.
+struct Item {
+public:
+    Item(std::string name, std::vector<uint32_t> tags) : name_(std::move(name)),  tags_(std::move(tags)) {
+        std::transform(name_.begin(), name_.end(), name_.begin(), [](unsigned char c) {
+            return std::tolower(c);
+        });
+        std::sort(tags_.begin(), tags_.end());
+    }
+    bool operator==(const Item& rhs) const { return name_ == rhs.name_ && tags_ == rhs.tags_; }
+
+    const std::string& name() const { return name_; }
+    const std::vector<uint32_t>& tags() const { return tags_; }
+private:
+    std::string name_;
+    std::vector<uint32_t> tags_;
+};
+
+namespace std {
+template<>
+struct hash<Item> {
+    size_t operator()(const Item& item) const {
+        size_t result_hash = 0;
+        size_t p = 31;
+
+        for (auto c : item.name()) {
+            result_hash = result_hash * p + c;
+        }
+
+        for (auto tag : item.tags()) {
+            result_hash = result_hash * p + tag;
+        }
+
+        return result_hash;
+    }
+};
+}
+
 static std::string solve(const std::string& ops, std::vector<std::string>& names,
                          std::vector<std::vector<uint32_t>>& tags) {
-    (void)names;
-    (void)tags;
-    return std::string(ops.size(), '-');
+    std::string ans;
+    ans.reserve(names.size());
+    std::unordered_set<Item> items;
+
+    for (int i = 0 ; i < names.size(); ++i) {
+        Item item = Item(names[i], tags[i]);
+        
+        if (ops[i] == 'A') {
+            auto [it, success] = items.insert(std::move(item));
+            if (success) ans += '+';
+            else ans += '-';
+        } else if (ops[i] == 'H') {
+            if (items.find(item) != items.end()) ans += '+';
+            else ans += '-';
+
+        } else if (ops[i] == 'R') {
+            int erased = items.erase(item);
+            if (erased > 0) ans += '+';
+            else ans += '-';
+        }
+    }
+
+    return ans;
 }
 
 int main() {
