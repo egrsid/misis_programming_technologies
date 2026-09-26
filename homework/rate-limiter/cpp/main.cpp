@@ -42,11 +42,44 @@ struct Rule { int64_t k, w; };
 // TODO: для каждого запроса вернуть 'A' (пропустить) или 'D' (отклонить).
 // Нужна амортизированная O(1) на запрос при фиксированном числе правил.
 static std::string solve(const std::vector<Rule>& rules, const std::vector<int64_t>& users,
-                         const std::vector<int64_t>& times) {
-    (void)rules;
-    (void)times;
-    return std::string(users.size(), 'A');
+                         const std::vector<int64_t>& times) {   
+    std::string ans;
+    ans.reserve(users.size());
+
+    std::unordered_map<int64_t, std::array<std::deque<int64_t>, 3>> map;
+    for (int i = 0; i < users.size(); ++i) {
+        auto& u_deque = map[users[i]];
+        
+        for (int j = 0; j < rules.size(); ++j) {
+            Rule rule = rules[j];
+            while (!u_deque[j].empty() && u_deque[j].front() <= times[i] - rule.w) {
+                u_deque[j].pop_front();
+            }
+        }
+
+        bool allowed = false;
+        for (int j = 0; j < rules.size(); ++j) {
+            Rule rule = rules[j];
+            if (u_deque[j].size() < rule.k) allowed = true;
+            else {
+                allowed = false;
+                break;
+            }
+        }
+
+        if (allowed) {
+            ans += "A";
+            for (int j = 0; j < rules.size(); ++j) {
+                u_deque[j].push_back(times[i]);
+            }
+        } else ans += "D";
+    }
+
+    return ans;
 }
+
+
+
 
 int main() {
     std::ios::sync_with_stdio(false);
