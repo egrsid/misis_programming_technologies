@@ -1,0 +1,5 @@
+{"id":"push_back","input":{"container":"array","workload":"push_back","n":10,"seed":42},"expected":{"len":10,"checksum":37734771}}
+{"id":"push_front","input":{"container":"deque","workload":"push_front","n":10,"seed":42},"expected":{"len":10,"checksum":35871179}}
+{"id":"queue","input":{"container":"linked","workload":"queue","n":10,"seed":42},"expected":{"len":6,"checksum":10306664}}
+{"id":"sorted-10","input":{"container":"array","workload":"sorted_insert","n":10,"seed":42},"expected":{"len":5,"checksum":10682107}}
+{"id":"sorted-1000","input":{"container":"linked","workload":"sorted_insert","n":1000,"seed":7},"expected":{"len":500,"checksum":644103494}}

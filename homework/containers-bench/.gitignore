@@ -1,0 +1,5 @@
+rust/target/
+zig/.zig-cache/
+zig/zig-out/
+build/
+__pycache__/
