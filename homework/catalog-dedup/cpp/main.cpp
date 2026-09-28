@@ -109,6 +109,7 @@ static std::string solve(const std::string& ops, std::vector<std::string>& names
     return ans;
 }
 
+
 int main() {
     std::ios::sync_with_stdio(false);
     std::string line(std::istreambuf_iterator<char>(std::cin), {});
