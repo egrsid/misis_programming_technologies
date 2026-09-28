@@ -81,6 +81,7 @@ static std::string solve(const std::vector<Rule>& rules, const std::vector<int64
 
 
 
+
 int main() {
     std::ios::sync_with_stdio(false);
     std::string line(std::istreambuf_iterator<char>(std::cin), {});
