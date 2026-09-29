@@ -88,7 +88,7 @@ static std::string classify(double /*price*/, const std::string& description) {
         description.find("одежда") != std::string::npos ||
         description.find("Одежда") != std::string::npos ||
         description.find("обувь") != std::string::npos ||
-        description.find("Обувь") != std::string::npos ||
+        description.find("Одедь") != std::string::npos ||
         description.find("пальто") != std::string::npos ||
         description.find("Пальто") != std::string::npos) {
         return "clothing";
@@ -107,7 +107,19 @@ static std::string classify(double /*price*/, const std::string& description) {
         description.find("билет") != std::string::npos ||
         description.find("Билет") != std::string::npos ||
         description.find("Яндекс") != std::string::npos ||
-        description.find("яндекс") != std::string::npos) {
+        description.find("яндекс") != std::string::npos ||
+        description.find("бензин") != std::string::npos ||
+        description.find("Бензин") != std::string::npos ||
+        description.find("топливо") != std::string::npos ||
+        description.find("Топливо") != std::string::npos ||
+        description.find("заправка") != std::string::npos ||
+        description.find("Заправка") != std::string::npos ||
+        description.find("АЗС") != std::string::npos ||
+        description.find("азс") != std::string::npos ||
+        description.find("Лукойл") != std::string::npos ||
+        description.find("лукойл") != std::string::npos ||
+        description.find("Газпром") != std::string::npos ||
+        description.find("газпром") != std::string::npos) {
         return "transport";
     }
 
