@@ -1,0 +1,8 @@
+BasedOnStyle: Google
+Standard: Latest
+ColumnLimit: 80
+FixNamespaceComments: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+MaxEmptyLinesToKeep: 1
