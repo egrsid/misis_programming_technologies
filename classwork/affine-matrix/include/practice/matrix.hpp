@@ -67,34 +67,96 @@ concept Multipliable =
 
 template <Scalar T, std::size_t N>
 Matrix<T, N, N> identity() {
-  todo("identity");
+  Matrix<T, N, N> ans{};
+  auto mtrx = ans.view();
+
+  for (std::size_t i = 0; i < N; ++i) {
+    mtrx[i, i] = 1;
+  }
+
+  return ans;
 }
 
 template <MatrixView A, MatrixView B>
   requires SameShape<A, B>
-auto add(A, B) -> Matrix<typename A::value_type, A::static_extent(0),
+auto add(A a, B b) -> Matrix<typename A::value_type, A::static_extent(0),
                          A::static_extent(1)> {
-  todo("add");
+  using T = typename A::value_type;
+  constexpr std::size_t rows = A::static_extent(0);
+  constexpr std::size_t cols = A::static_extent(1);
+
+  Matrix<T, rows, cols> ans{};
+  auto mtrx = ans.view();
+
+  for (std::size_t i = 0; i < rows; ++i) {
+    for (std::size_t j = 0; j < cols; ++j) {
+      mtrx[i, j] = a[i, j] + b[i, j];
+    }
+  }
+
+  return ans;
 }
 
 template <MatrixView A>
-auto scale(A, typename A::value_type)
+auto scale(A a, typename A::value_type factor)
     -> Matrix<typename A::value_type, A::static_extent(0),
               A::static_extent(1)> {
-  todo("scale");
+  using T = typename A::value_type;
+  constexpr std::size_t rows = A::static_extent(0);
+  constexpr std::size_t cols = A::static_extent(1);
+
+  Matrix<T, rows, cols> ans{};
+  auto mtrx = ans.view();
+
+  for (std::size_t i = 0; i < rows; ++i) {
+    for (std::size_t j = 0; j < cols; ++j) {
+      mtrx[i, j] = a[i, j] * factor;
+    }
+  }
+
+  return ans;
 }
 
 template <MatrixView A>
-auto transpose(A) -> Matrix<typename A::value_type, A::static_extent(1),
+auto transpose(A a) -> Matrix<typename A::value_type, A::static_extent(1),
                             A::static_extent(0)> {
-  todo("transpose");
+  using T = typename A::value_type;
+  constexpr std::size_t rows = A::static_extent(0);
+  constexpr std::size_t cols = A::static_extent(1);
+
+  Matrix<T, cols, rows> ans{};
+  auto mtrx = ans.view();
+
+  for (std::size_t i = 0; i < cols; ++i) {
+    for (std::size_t j = 0; j < rows; ++j) {
+      mtrx[i, j] = a[j, i];
+    }
+  }
+
+  return ans;
 }
 
 template <MatrixView A, MatrixView B>
   requires Multipliable<A, B>
-auto multiply(A, B) -> Matrix<typename A::value_type, A::static_extent(0),
+auto multiply(A a, B b) -> Matrix<typename A::value_type, A::static_extent(0),
                               B::static_extent(1)> {
-  todo("multiply");
+  using T = typename A::value_type;
+  constexpr std::size_t rows = A::static_extent(0);
+  constexpr std::size_t cols = B::static_extent(1);
+  constexpr std::size_t K = A::static_extent(1);
+
+  Matrix<T, rows, cols> ans{};
+  auto mtrx = ans.view();
+
+  for (std::size_t i = 0; i < rows; ++i) {
+    for (std::size_t j = 0; j < cols; ++j) {
+      for (std::size_t k = 0; k < K; ++k) {
+        mtrx[i, j] += a[i, k] * b[k, j];
+      }
+    }
+  }
+
+  return ans;
 }
 
 }
