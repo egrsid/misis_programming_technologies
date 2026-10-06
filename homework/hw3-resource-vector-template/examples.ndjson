@@ -1,0 +1,1 @@
+{"id":"example","input":{"left":[[2,4,10],[2,8,10],[0,0,0],[4,8,10]],"right":[[4,8,10],[4,4,10],[0,0,0],[2,4,10]]},"expected":[{"sum":[6,12,20],"order":"less","fits":true},{"sum":[6,12,20],"order":"unordered","fits":false},{"sum":[0,0,0],"order":"equal","fits":true},{"sum":[6,12,20],"order":"greater","fits":false}]}
