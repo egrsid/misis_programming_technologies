@@ -1,0 +1,3 @@
+{"id":"example-fp","input":{"prices":[1000,999,1000,0],"rules":"FP","amounts":[100,10],"thresholds":[0,0]},"expected":[810,809,810,0]}
+{"id":"example-pf","input":{"prices":[1000,999,1000,0],"rules":"PF","amounts":[10,100],"thresholds":[0,0]},"expected":[800,799,800,0]}
+{"id":"example-threshold","input":{"prices":[1000,1100],"rules":"FT","amounts":[100,200],"thresholds":[0,1000]},"expected":[900,800]}
