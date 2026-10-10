@@ -5,6 +5,8 @@
 #include <string_view>
 #include <unordered_set>
 #include <vector>
+#include <optional>
+#include <variant>
 
 struct Cursor {
   std::string_view s;
