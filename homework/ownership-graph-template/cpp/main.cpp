@@ -148,6 +148,7 @@ void setSlot(Slot& dst, Slot value) {
 static std::vector<std::string> solve(int nvars, const std::vector<Op>& ops) {
   std::vector<Slot> vars(nvars);
   std::vector<std::weak_ptr<Obj>> allObj;
+  allObj.reserve(ops.size());
 
   for (int k = 0; k < ops.size(); k++) {
     char code = ops[k].code;
