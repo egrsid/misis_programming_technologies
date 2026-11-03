@@ -1,0 +1,9 @@
+BasedOnStyle: Google
+Standard: Latest
+ColumnLimit: 80
+InsertBraces: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+SeparateDefinitionBlocks: Always
+MaxEmptyLinesToKeep: 1
